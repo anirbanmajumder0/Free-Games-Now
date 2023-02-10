@@ -1,0 +1,17 @@
+doctype html
+html
+    head
+        title=title
+        link(rel='stylesheet', href='/index.css')
+        meta(name='viewport' content='windth=device-width, initial-scale=1')
+    body
+        ul
+            each list in lists
+                each val, index in list
+                    if index == 0
+                        li  #{val}
+                        a
+                    if index == 1
+                        a(href= ""+val) #{val}
+                    if index == 2
+                        a #{val}

@@ -1,0 +1,20 @@
+html {
+    background: #000;
+    color: #fff;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%
+}
+
+body {
+	margin: 10%
+}
+
+li {
+	display: inline-block;
+	//green color
+	color : #00ff00;
+	text-align: center;
+	line-height: 100px;
+	margin: 0 10px 10px 0;
+	padding: 0 20px;
+}
