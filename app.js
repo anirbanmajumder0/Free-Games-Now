@@ -2,10 +2,11 @@ const express = require('express')
 const cheerio = require('cheerio')
 const axios = require('axios')
 const path = require('path')
+var cron = require('node-cron')
 const app = express()
 app.set('view engine', 'pug');
 app.use(express.static(__dirname + '/public'));
-
+var games = []
 
 
 const getPostTitles = async () => {
@@ -36,17 +37,22 @@ const getPostTitles = async () => {
 	}
 };
 
-getPostTitles()
-    .then((postTitles) => games = postTitles);
+cron.schedule('0 0 * * *', () => {
+	getPostTitles()
+    	.then((postTitles) => games = postTitles);
+	console.log('updated games list 24hrs later'+games);
+  });
 
 // Handling GET / request
 app.get('/', (req, res) => {
-	console.log(games)
+	console.log("new request"+games)
 	res.render('index', {title:"Free Games Today" ,lists: games })
 })
+
 //app.get('/', (req, res) => {
 //	res.sendFile(path.join(__dirname, 'index.html'))
 //})
+
 app.listen(3000, () => {
 	console.log("Server is Running")
 })
