@@ -37,6 +37,9 @@ const getPostTitles = async () => {
 	}
 };
 
+getPostTitles()
+	.then((postTitles) => games = postTitles);
+
 cron.schedule('0 0 * * *', () => {
 	getPostTitles()
     	.then((postTitles) => games = postTitles);
