@@ -3,15 +3,15 @@ html
     head
         title=title
         link(rel='stylesheet', href='/index.css')
-        meta(name='viewport' content='windth=device-width, initial-scale=1')
+        meta(name='viewport' content='width=device-width, initial-scale=1')
     body
-        ul
-            each list in lists
-                each val, index in list
-                    if index == 0
-                        li  #{val}
-                        a
-                    if index == 1
-                        a(href= ""+val) #{val}
-                    if index == 2
-                        a #{val}
+        h1 #{title}
+        div.main
+            ul
+                each list in lists
+                    li
+                        div.bundle-title
+                            a.game(href= ""+list[1]) #{list[0]}
+                        div.bundle-row1
+                            div.bundletime #{list[2]}
+
